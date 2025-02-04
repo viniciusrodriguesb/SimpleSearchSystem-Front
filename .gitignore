@@ -1,0 +1,35 @@
+# Compiled output
+dist/
+out-tsc/
+built/
+
+# Node Modules
+node_modules/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Angular related
+.angular/
+
+# Misc
+.DS_Store
+Thumbs.db
+
+# Environment variables
+src/environments/environment*.ts
+
+# Angular cache
+.angular/cache/
+
+# Coverage reports
+coverage/
