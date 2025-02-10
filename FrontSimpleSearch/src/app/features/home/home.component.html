@@ -1,3 +1,36 @@
-<h1>Hommme</h1>
-<a href="/form">link</a>
+<main>
+  <section>
+    <h1>Olá, Usuário</h1>
+    <p>Bem vindo ao sistema de criação e resolução de formulários. Aqui você poderá criar formulários e gerenciar métricas do mesmo.</p>
+  </section>
 
+  <!-- Todo: Carrossel com informações do site. -->
+
+  <section class="formularios">
+    <p class="titulo">Formulários mais respondidos</p>
+
+    <a href="/form" class="link-div">
+        <ng-container *ngFor="let form of forms">
+            <div class="card" *ngIf="form.icAtivo">
+              <span class="descricao">{{ form.descricao }}</span>
+      
+              <span class="autor">Autor: {{ form.autor }}</span>
+              <span class="data">Data da Criação: {{ form.dtCriacao }}</span>
+            </div>
+          </ng-container>
+    </a>
+    
+    <nav class="paginacao">
+        <button (click)="mudarPagina(paginaAtual - 1)" [disabled]="paginaAtual === 1"><i class="bi bi-arrow-left"></i>A</button>
+
+        <span *ngFor="let page of [].constructor(totalPaginas); let i = index">
+            <button (click)="mudarPagina(i + 1)" [class.active]="i+1 === paginaAtual">
+                {{i + 1}}    
+            </button>
+        </span>
+
+        <button (click)="mudarPagina(paginaAtual + 1)" [disabled]="paginaAtual === totalPaginas"><i class="bi bi-arrow-right"></i>P</button>
+    </nav>
+
+  </section>
+</main>

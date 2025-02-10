@@ -1,0 +1,62 @@
+main {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 2rem;
+
+  .link-div {
+    display: block;
+    text-decoration: none;
+  }
+
+  .formularios {
+    .titulo {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.875rem;
+      background-color: #999999;
+      border-radius: 1.25rem;
+      width: 30%;
+      height: 6.25rem;
+      padding: 1rem;
+
+      .descricao {
+        color: #260101;
+      }
+
+      .autor,
+      .data {
+        font-size: 0.75rem;
+        color: #260101;
+        margin-left: 60%;
+      }
+    }
+
+    .paginacao {
+      margin-top: 10px;
+
+      button {
+        margin: 0.125rem;
+        padding: 0.313rem 0.625rem;
+        border-radius: 0.313rem;
+        color: black;
+        width: 2rem;
+        border: 1px solid #C4CDD5;
+        height: 2rem    ;
+      }
+
+      button.active {
+        background-color: #FFF;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
