@@ -1,4 +1,5 @@
-<main class="container">
+<app-loader *ngIf="isLoading"></app-loader>
+<main class="container" *ngIf="!isLoading">
   <section class="row">
     <h1>Olá, Usuário</h1>
     <p>
@@ -13,7 +14,7 @@
     <p class="titulo">Formulários mais respondidos</p>
 
     <ol class="list-group">
-      <ng-container *ngFor="let form of forms; let i = index">
+      <ng-container *ngFor="let form of formularios; let i = index">
         <li
           class="list-group-item d-flex justify-content-between align-items-start"
         >
@@ -28,44 +29,4 @@
       </ng-container>
     </ol>
   </section>
-
-  <nav class="mt-5">
-    <ul class="pagination">
-      
-      <!-- Botão Anterior -->
-      <li class="page-item" [class.disabled]="paginaAtual === 1">
-        <a
-          class="page-link"
-          href="#"
-          (click)="mudarPagina(paginaAtual - 1)"
-          aria-label="Anterior"
-        >
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-
-      <!-- Números da Paginação -->
-      <li
-        *ngFor="let page of [].constructor(totalPaginas); let i = index"
-        class="page-item"
-        [class.active]="i + 1 === paginaAtual"
-      >
-        <a class="page-link" href="#" (click)="mudarPagina(i + 1)">{{
-          i + 1
-        }}</a>
-      </li>
-
-      <!-- Botão Próximo -->
-      <li class="page-item" [class.disabled]="paginaAtual === totalPaginas">
-        <a
-          class="page-link"
-          href="#"
-          (click)="mudarPagina(paginaAtual + 1)"
-          aria-label="Próximo"
-        >
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
 </main>
