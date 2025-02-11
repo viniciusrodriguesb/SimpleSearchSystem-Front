@@ -1,36 +1,71 @@
-<main>
-  <section>
+<main class="container">
+  <section class="row">
     <h1>Olá, Usuário</h1>
-    <p>Bem vindo ao sistema de criação e resolução de formulários. Aqui você poderá criar formulários e gerenciar métricas do mesmo.</p>
+    <p>
+      Bem vindo ao sistema de criação e resolução de formulários. Aqui você
+      poderá criar formulários e gerenciar métricas do mesmo.
+    </p>
   </section>
 
   <!-- Todo: Carrossel com informações do site. -->
 
-  <section class="formularios">
+  <section class="row">
     <p class="titulo">Formulários mais respondidos</p>
 
-    <a href="/form" class="link-div">
-        <ng-container *ngFor="let form of forms">
-            <div class="card" *ngIf="form.icAtivo">
-              <span class="descricao">{{ form.descricao }}</span>
-      
-              <span class="autor">Autor: {{ form.autor }}</span>
-              <span class="data">Data da Criação: {{ form.dtCriacao }}</span>
-            </div>
-          </ng-container>
-    </a>
-    
-    <nav class="paginacao">
-        <button (click)="mudarPagina(paginaAtual - 1)" [disabled]="paginaAtual === 1"><i class="bi bi-arrow-left"></i>A</button>
-
-        <span *ngFor="let page of [].constructor(totalPaginas); let i = index">
-            <button (click)="mudarPagina(i + 1)" [class.active]="i+1 === paginaAtual">
-                {{i + 1}}    
-            </button>
-        </span>
-
-        <button (click)="mudarPagina(paginaAtual + 1)" [disabled]="paginaAtual === totalPaginas"><i class="bi bi-arrow-right"></i>P</button>
-    </nav>
-
+    <ol class="list-group">
+      <ng-container *ngFor="let form of forms; let i = index">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-start"
+        >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ form.descricao }}</div>
+            <span class="autor">Autor: {{ form.autor }}</span
+            ><br />
+            <span class="data">Data da Criação: {{ form.dtCriacao }}</span>
+          </div>
+          <span class="badge text-bg-primary rounded-pill">14</span>
+        </li>
+      </ng-container>
+    </ol>
   </section>
+
+  <nav class="mt-5">
+    <ul class="pagination">
+      
+      <!-- Botão Anterior -->
+      <li class="page-item" [class.disabled]="paginaAtual === 1">
+        <a
+          class="page-link"
+          href="#"
+          (click)="mudarPagina(paginaAtual - 1)"
+          aria-label="Anterior"
+        >
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+      <!-- Números da Paginação -->
+      <li
+        *ngFor="let page of [].constructor(totalPaginas); let i = index"
+        class="page-item"
+        [class.active]="i + 1 === paginaAtual"
+      >
+        <a class="page-link" href="#" (click)="mudarPagina(i + 1)">{{
+          i + 1
+        }}</a>
+      </li>
+
+      <!-- Botão Próximo -->
+      <li class="page-item" [class.disabled]="paginaAtual === totalPaginas">
+        <a
+          class="page-link"
+          href="#"
+          (click)="mudarPagina(paginaAtual + 1)"
+          aria-label="Próximo"
+        >
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </main>

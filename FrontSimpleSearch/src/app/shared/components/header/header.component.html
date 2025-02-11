@@ -1,2 +1,46 @@
-<p style="top: 0; width: 100%; text-align: center; background-color: red; position: fixed;">header works!</p>
+<nav class="navbar bg-light">
+  <div class="container-fluid d-flex">
+ 
+    <button
+      class="navbar-toggler me-2"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>    
 
+    <a class="navbar-brand" href="/"><img src="../../../../assets/SSF.png"></a>
+
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >   
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MENU</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item">
+            <i class="bi bi-house-door-fill"></i>
+            <a class="nav-link active" aria-current="page" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <i class="bi bi-speedometer"></i>
+            <a class="nav-link" href="#">DASHBOARD</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
