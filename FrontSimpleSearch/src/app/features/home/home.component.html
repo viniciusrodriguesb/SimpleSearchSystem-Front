@@ -15,17 +15,20 @@
 
     <ol class="list-group">
       <ng-container *ngFor="let form of formularios; let i = index">
-        <li
-          class="list-group-item d-flex justify-content-between align-items-start"
-        >
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">{{ form.descricao }}</div>
-            <span class="autor">Autor: {{ form.autor }}</span
-            ><br />
-            <span class="data">Data da Criação: {{ form.dtCriacao }}</span>
-          </div>
-          <span class="badge text-bg-primary rounded-pill">14</span>
-        </li>
+        <a class="link">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+            (click)="navegarParaFormulario(form.idFormulario)"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">{{ form.descricao }}</div>
+              <span class="autor">Autor: {{ form.autor }}</span
+              ><br />
+              <span class="data">Data da Criação: {{ form.dtCriacao }}</span>
+            </div>
+            <span class="badge text-bg-primary rounded-pill">14</span>
+          </li>
+        </a>
       </ng-container>
     </ol>
   </section>
