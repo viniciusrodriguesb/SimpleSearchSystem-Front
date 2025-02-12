@@ -1,4 +1,7 @@
-import { RespostaFormularioDTO } from './../../core/models/DTOs/RespostaFormularioDTO';
+import {
+  RespostaFormularioDTO,
+  DadosRespostaDTO,
+} from './../../core/models/DTOs/RespostaFormularioDTO';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -54,7 +57,6 @@ export class FormularioComponent implements OnInit {
           this.formulario = dto;
           this.gerarFormulario();
           this.isLoading = false;
-          console.log(this.formulario);
         },
         (error) => {
           console.error('Erro ao obter os formulários.', error);
@@ -64,7 +66,20 @@ export class FormularioComponent implements OnInit {
     }
   }
 
-  gerarFormulario() {
+  enviarRespostas() {
+    let repostaFormulario = this.montarObjetoResposta();
+
+    this._respostaService.salvarRespostas(repostaFormulario).subscribe(
+      () => {
+        console.log('Respostas salvas com sucesso!');
+      },
+      (error) => {
+        console.log('Erro ao enviar a requisição', error);
+      }
+    );
+  }
+
+  private gerarFormulario() {
     let formControls: any = {};
 
     this.formulario?.perguntas?.forEach((perg: any) => {
@@ -74,7 +89,7 @@ export class FormularioComponent implements OnInit {
     this.questionario = this._formBuilder.group(formControls);
   }
 
-  enviarRespostas() {
+  private montarObjetoResposta(): RespostaFormularioDTO {
     const respostas = this.questionario.value;
 
     const repostaFormulario: RespostaFormularioDTO = {
@@ -88,13 +103,6 @@ export class FormularioComponent implements OnInit {
       })),
     };
 
-    this._respostaService.salvarRespostas(repostaFormulario).subscribe(
-      (response) => {
-        console.log('Retorno:', response);
-      },
-      (error) => {
-        console.log('Erro ao enviar a requisição', error);
-      }
-    );
+    return repostaFormulario;
   }
 }

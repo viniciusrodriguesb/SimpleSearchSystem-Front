@@ -42,8 +42,6 @@ export class HomeComponent implements OnInit {
   }
 
   navegarParaFormulario(id: number | undefined) {
-    console.log('entrou', id);
-    
     if (id != null || id != undefined) {
       this._router.navigate(['formulario', id]);
     }
