@@ -1,0 +1,46 @@
+form {
+  .button-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12%;
+
+    button {
+      border: 0.75rem;
+      width: 21.438rem;
+      height: 2.75rem;
+    }
+  }
+
+  .card {
+    border: none;
+
+    .opcao {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 0.125rem solid #e4e4e7;
+      border-radius: 0.75rem;
+      width: 21.438rem;
+      height: 3.5rem;
+      padding: 0.5rem;
+      color: black;
+
+      input {
+        color: #52525b;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+      }
+    }
+
+    .pergunta {
+      size: 1rem;
+    }
+  }
+}

@@ -1,5 +1,37 @@
 <app-loader *ngIf="isLoading"></app-loader>
-<main class="container">
-    <p *ngIf="!isLoading">formulario works!</p>
-</main>
+<main class="container" *ngIf="!isLoading">
+  <section class="row mt-4">
+    <div class="col">
+      <p>
+        Responda atentamente todas as perguntas, suas respostas só serão
+        validadas quando concluir totalmente o questionário.
+      </p>
+    </div>
+  </section>
 
+  <form [formGroup]="questionario" (ngSubmit)="enviarRespostas()">
+    <section
+      class="row mt-4 text-center card"
+      *ngFor="let pergunta of formulario?.perguntas"
+    >
+      <div class="col">
+        <p class="pergunta">{{ pergunta.texto }}</p>
+        <div class="mt-4 opcao" *ngFor="let opcao of pergunta.opcoes">
+          <label class="form-check-label">
+            {{ opcao.texto }}
+            <input
+              type="radio"
+              [value]="opcao.id"
+              [formControlName]="pergunta.id?.toString()!"
+              class="form-check-input"
+            />
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <div class="button-submit">
+      <button type="submit" class="btn btn-primary">Enviar Respostas</button>
+    </div>
+  </form>
+</main>
